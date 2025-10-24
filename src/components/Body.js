@@ -42,6 +42,8 @@ const [listOfRestaurants,setListOfRestaurant] = useState([
 }
 ]);
 
+const [searchText, setSearchText] = useState("");
+
 //Hook given by React to run some code on initial render i.e. useEffect
 //By default useEffect runs after every render
 //If we want to run useEffect only once i.e. on initial render we can pass empty dependency array []
@@ -94,6 +96,29 @@ if (listOfRestaurantsJS.length === 0) {
     return (
         <div className="body">
             <div className="filter">
+                <div className="search">
+
+                    {/* Whatever there in the input box to get that data we need to take value from the input box */}
+                    {/* And bind the input box to the local state variable */}
+                    {/* We are binding the input box to the searchText state variable */}
+                    {/* without onChange the default value of the input box will not change */}
+                    {/* With onChange we are updating the searchText state variable */}
+                    {/* Whenever state variable updates, React trigger a reconciliation cycle(re-renders the component) */}
+                    {/* React is re-rendering whole body component but it is only updating input box value inside the dom as after comparison it find only input box value changes and everything else is same */}
+                    <input type="text" className="search-box" placeholder="Search" value={searchText} onChange={(e)=>{
+                        setSearchText(e.target.value);
+                    }} />
+                    <button className="search-btn" onClick={
+                        // on click of the search button filter the Restaurant cards and update the UI
+                        () => {
+                            console.log("Search Clicked",searchText);
+                            //Filter the restaurant cards based on searchText
+                            const filteredRestaurants = listOfRestaurants.filter((res) => res.name.toLowerCase().includes(searchText.toLowerCase()));
+                            //Update the Restaurant Cards
+                            setListOfRestaurant(filteredRestaurants);
+                    }}>Search</button>
+
+                </div>
                 <button className="filter-btn" onClick={()=>{
                     //listOfRestaurant updated but on the UI it is not updated
                     //Ideally when here listOfRestaurants updated it should be update in the res-container div i.e. On UI

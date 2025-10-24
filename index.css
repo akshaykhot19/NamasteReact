@@ -72,3 +72,7 @@
     cursor: pointer;
 }
 
+.filter{
+    display: flex;
+}
+
