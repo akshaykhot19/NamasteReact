@@ -7,15 +7,14 @@
     <title>Namaste React</title>
 </head>
 <body>
-    <!-- React will only work in the element which we have selected i.e. root div in this case 
-    So h1 outside the root div will not be replaces  -->
-    <h1>Hello I am at the top of the root</h1>
+   
     <div id="root">
-        <h1>Akshay is here !!</h1>
+       <h1>Not Rendered</h1>
     </div>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-    <script src="./app.js"></script>
+    <!-- While building the application it is showing error as Browser scripts cannot have imports or export as it is treating tApp.js as normal JavaScript Script  -->
+    <!-- And normal JavaScript does not have this imports -->
+    <!-- We need to tell taht this App.js is not a normal JavaScript file it is a module -->
+    <script type="module" src="./src/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,37 @@
+{
+  "name": "namastereact",
+  "version": "1.0.0",
+  "description": "This is Namaste React by Akshay Saini ",
+  "scripts": {
+    "start" :"parcel index.html",
+    "build" :"parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshaykhot19/NamasteReact.git"
+  },
+  "keywords": [
+    "react",
+    "namaste",
+    "react",
+    "akshay",
+    "khot"
+  ],
+  "author": "Akshay Khot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshaykhot19/NamasteReact/issues"
+  },
+  "homepage": "https://github.com/akshaykhot19/NamasteReact#readme",
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "browserlist" :[
+    "last 2 versions"
+  ]
+}
