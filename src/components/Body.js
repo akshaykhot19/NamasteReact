@@ -20,6 +20,13 @@ const Body = ()=>{
 //It means super Powerful React variable keeps the UI in sync with Data Layer 
 //If listOfRestaurant is normal Variable then with the update of Normal Variable UI does not update 
 //Whenever a state variable updates react re-renders the component
+
+
+//Never Create useState outside of the component 
+//useState has a specific purpose it is used to create local state variable inside the functional components
+//Always call the hooks on the top i.e. When the function starts 
+//Never Create useState inside if/else loop,for loop, function as it can create inconsistancy in program 
+//In short state variables should be inside the component at the higher level. Try to keep it on the top
 const [listOfRestaurants,setListOfRestaurant] = useState([
     {
         id : "334475",
