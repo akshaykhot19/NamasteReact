@@ -20,10 +20,10 @@
 }
 
 .res-card {
-    margin: 20px;
+    margin: 25px;
     padding :5px;
-    width: 250px;
-    height: 400px;
+    width: 252px;
+    height: 450px;
     
    
 }
@@ -39,6 +39,7 @@
 
 .res-logo {
     width : 100%;
+    height: 150px;
     
 }
 
@@ -58,8 +59,8 @@
 
 .shimmer-card {
     margin: 20px;
-    padding :5px;
-    width: 200px;
+    padding :8px;
+    width: 255px;
     height: 400px;
     background-color: #f0f0f0;
    
