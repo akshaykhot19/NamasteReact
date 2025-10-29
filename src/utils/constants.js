@@ -3,6 +3,6 @@ export const LOGO_URL = "https://marketplace.canva.com/EAGXsRURT9o/1/0/1600w/can
 
 
 // One file/module can have only one default export
-export default LOGO_URL;
+// export default LOGO_URL;
 
 

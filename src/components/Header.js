@@ -1,11 +1,23 @@
 //Import of named export
 import {LOGO_URL} from "../utils/constants";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const Header = () => {
 
     const [buttonName, setButtonName] = useState("Login");
     console.log("Header Rendered");
+
+    // Every time Header COmponent is rendered useEffect() will be called
+    //But because we have put dependency array [],This dependency array changes the behaviour of the render
+    //Callback function is mandatory but [] is not mandatory
+    //If we dont give dependecy Array,useEffect will be called on every time component render
+    //If there is empty Dependency Array,useEffect is called on only initial render just once i.e. useEffect aclled just once when component is run for the first time 
+    //Therefore default behaviour of useEffect is to be called after each render but if we give dependency array then it will we called only once initially while rendering component  
+    //If we put something in the dependency Array then it will only be called when dependency changes
+    useEffect(()=>{
+        console.log ("useEffect Called")
+    },[buttonName]);
+    //So if dependency array like above then useEffect will be called every time buttonName is updated 
 
     return (
         <div className = "header">
