@@ -50,28 +50,8 @@ const [listOfRestaurants,setListOfRestaurant] = useState([
 }
 ]);
 
-const [searchText, setSearchText] = useState("");
-
-
-useEffect(()=>{
-    //API Call
-    // console.log("Use Effect Called");
-
-    fetchData();
-},[]);
-
-//Fetching Logic will be same as we do in normal JavaScript
-const fetchData = async () => {
-    // const data = await fetch ("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
-    // const json = await data.json();
-    // console.log(json);
-    // setListOfRestaurant(json?.data?.cards[2]?.data?.data?.cards);
-}
-
-console.log("Body Rendered");
-
-//Normal JavaScript Variable 
-let listOfRestaurantsJS = [{
+const [filteredListOfRestaurant,setFilteredRestaurant] = useState([
+    {
         id : "334475",
         name : "KFC",
         cloudinaryImageId : "" ,
@@ -89,11 +69,32 @@ let listOfRestaurantsJS = [{
         deliveryTime : 48,
         avgRating : "4.5"
     
-}];
+}
+]);
+
+const [searchText, setSearchText] = useState("");
+
+
+useEffect(()=>{
+    //API Call
+    // console.log("Use Effect Called");
+    fetchData();
+},[]);
+
+//Fetching Logic will be same as we do in normal JavaScript
+const fetchData = async () => {
+    // const data = await fetch ("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+    // const json = await data.json();
+    // console.log(json);
+    // setListOfRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+}
+
+console.log("Body Rendered");
+
 
 //Conditional Rendering
 //If listOfRestaurantsJS is empty then we will show Shimmer UI else we will show the actual Body UI 
-if (listOfRestaurantsJS.length === 0) {
+if (listOfRestaurants.length === 0) {
     return <Shimmer/>;
 }
 
@@ -113,15 +114,16 @@ if (listOfRestaurantsJS.length === 0) {
                             //Filter the restaurant cards based on searchText
                             const filteredRestaurant = listOfRestaurants.filter((res) => res.name.toLowerCase().includes(searchText.toLowerCase()));
                             //Update the Restaurant Cards
-                            setListOfRestaurant(filteredRestaurants);
+                            setFilteredRestaurant(filteredRestaurant);
                     }}>Search</button>
 
                 </div>
                 <button className="filter-btn" onClick={()=>{
           
 
-                    const filteredListOfRestaurants = listOfRestaurants.filter((res) => res.avgRating>4);
+                    const filteredRestaurant = listOfRestaurants.filter((res) => res.avgRating>4);
                     
+<<<<<<< HEAD
                
                     setListOfRestaurant( filteredListOfRestaurants);
 =======
