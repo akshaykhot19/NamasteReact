@@ -6,7 +6,7 @@ import Body from "./components/Body"
 //RouterProvider will provide this routing configuration to our app
 //Outlet is used to render the child components inside the parent component
 //Outlet is the component which will render the children of that specific route
-import { createBrowserRouter, RouterProvider,Outlet} from "react-router-dom";
+import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ErrorComponent from "./components/ErrorComponent";
