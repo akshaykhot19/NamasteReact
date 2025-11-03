@@ -10,6 +10,8 @@ import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ErrorComponent from "./components/ErrorComponent";
+import ProductDetails from "./components/ProductDetails";
+import ProductDetails from "./components/ProductDetails";
 
 //1. App Layout which will include different components
 const AppLayout = () => {
@@ -54,6 +56,12 @@ const appRouter = createBrowserRouter([
         },{
             path:"/contact",
             element : <Contact/>
+        },{
+            // "/:productId" means productId is dynamic and it will be changes according to the product
+            // How we can read this sent "/:productId" in our component which is ProductDeatils which is showing restaurant deatils 
+            //React DOM gives us hook known as useParams
+            path: "/products/:productId",
+            element: <ProductDetails/>
         }],
         //If any error occurs in the path then show ErrorComponent
         errorElement : <ErrorComponent/>
