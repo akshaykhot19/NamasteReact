@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //This is a functional component
 //We will write this component as Class based Component
 const User = (props)=>{
@@ -8,6 +8,10 @@ const User = (props)=>{
     //To update the state variable we have one more method 
     const [count,setCount] = useState (0);
     const [count1] = useState (1)
+
+    useEffect (()=>{
+        console.log (props);
+    },[])
 
     return <div className="userCard">
         {/* Using the props sent from About.js */}

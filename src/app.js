@@ -60,6 +60,10 @@ const appRouter = createBrowserRouter([
             // "/:productId" means productId is dynamic and it will be changes according to the product
             // How we can read this sent "/:productId" in our component which is ProductDeatils which is showing restaurant deatils 
             //React DOM gives us hook known as useParams
+            //We can use that hook to read the dynamic path variable
+            //Example : If we click on product with id 5 then the path will be /products/5
+            //In ProductDetails component we can read this 5 by using useParams hook
+            //In ProductDetails component we can destructure productId from useParams hook
             path: "/products/:productId",
             element: <ProductDetails/>
         }],

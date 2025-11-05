@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 
 const Body = ()=>{
@@ -96,13 +97,15 @@ if (listOfProducts.length === 0) {
             </div>
             <div className="res-container">
                {filteredListOfProducts.map((product)=>(
+                <Link key={product.id} to={"/products/"+product.id} >
                  <RestaurantCard key={product.id} resData= {product} />
+               </Link>
                ))}
                 
                 
             </div>
         </div>
     )
-}
+}           
 
 export default Body
