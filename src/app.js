@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client"
-import Header from "./components/header";
+import Header from "./components/Header";
 import Body from "./components/Body"
 //It will create routing configuration for us 
 //RouterProvider will provide this routing configuration to our app
@@ -12,6 +12,32 @@ import Contact from "./components/Contact";
 import ErrorComponent from "./components/ErrorComponent";
 import ProductDetails from "./components/ProductDetails";
 import ProductDetails from "./components/ProductDetails";
+import { lazy, Suspense } from "react";
+
+//We will not import Grocery Component like this directly but we will import it using lazy loading
+    //import Grocery from "./components/Grocery";
+//Because when our application laoding initially we dont want to load Grocery Component
+//We will load Grocery Component only when we visit /grocery path i.e. Lazy Loading/On Demand Loading
+//This will help in reducing the main bundle size and improve the performance of the Application
+
+//Below import is not same as normal import like above commented import
+//This will create a separate chunk for Grocery Component
+//This Grocery Component will be loaded only when we visit /grocery path
+//this import is basically a function which will take the path of the component to be loaded
+//With this we divided our application into multiple bundles
+//This is known as Code Splitting/Chunking of Components
+
+
+//Suspense is a component which will wrap the component which is being lazy loaded
+//Suppose Grocery Component is taking time to load then React will throw Something went wrong error
+//To avoid that we will wrap the lazy loaded component inside Suspense component
+//We can also provide a fallback UI to be shown while the lazy loaded component is loading
+//This fallback UI can be a Shimmer UI or Loading... text
+
+const Grocery = lazy(() => import ("./components/Grocery"));
+
+
+
 
 //1. App Layout which will include different components
 const AppLayout = () => {
@@ -56,6 +82,13 @@ const appRouter = createBrowserRouter([
         },{
             path:"/contact",
             element : <Contact/>
+        },{
+            path:"/grocery",
+            // Here we are wrapping the lazy loaded Grocery component inside Suspense component
+            //We are providing a fallback UI to be shown while Grocery component is loading
+            //If Grocery component is taking time to load then fallback UI will be shown\
+            //Fallback contains the JSX to be shown while the lazy loaded component is loading
+            element : <Suspense fallback={<div>Loading...</div>}><Grocery/></Suspense>  
         },{
             // "/:productId" means productId is dynamic and it will be changes according to the product
             // How we can read this sent "/:productId" in our component which is ProductDeatils which is showing restaurant deatils 

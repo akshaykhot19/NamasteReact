@@ -4,12 +4,15 @@ import { useState,useEffect } from "react";
 //Importing Link to navigate without refreshing the page
 //It works like anchor tag <a> but it doesn't refresh the page
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Header = () => {
 
     const [buttonName, setButtonName] = useState("Login");
     console.log("Header Rendered");
+
+    const isOnline = useOnlineStatus();
 
     // Every time Header COmponent is rendered useEffect() will be called
     //But because we have put dependency array [],This dependency array changes the behaviour of the render
@@ -35,9 +38,11 @@ const Header = () => {
                     {/* Never ever use the anchor tag when using React to route to an other page */}
                     {/* Because it will cause a full page refresh */}
                     {/* In React witout refreshing whole page still we can navigate between pages */}
+                    <li>Online Status : {isOnline ? "🟢 Online" : "🔴 Offline"}</li>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact Us</Link></li>
+                    <li><Link to="/grocery">Grocery</Link></li>
                     <li>Cart</li>
                     {/* On click buttonName got updated but UI did not re-render/Refreshed i.e. Header component didn't refreshed */}
                     {/* There should be a way to force re-render/refresh Header component and take the updated buttonName value*/}
